@@ -1,6 +1,4 @@
-# UniSphere – Campus Management System
-
-# User login credentials
+# Unisphere - User login credentials
 
 Admin Account:
 ID Number: UMT94148

@@ -1,0 +1,210 @@
+/* Programmer Name: Mr.Tang Chee Kin (TP075642)
+Program Name: My Booking
+Description: A Pop up window for Lecturer and Student to view the booking they made
+First written on: Monday, 2 June 2025
+Edited on: Wednesday, 2 July 2025 */
+
+:root{
+    --Container:rgba(255, 255, 255, 0.5);
+    --icon:#000;
+    --Text: #000;
+}
+
+.lightmode{
+    --Container:rgba(255, 255, 255, 0.5);
+    --icon:#000;
+    --Text: #000;
+    --scrollbar: rgba(0, 0, 0, 0.2);
+}
+
+.darkmode{
+    --Container:rgba(107, 107, 107, 0.5);
+    --icon:#fff;
+    --Text: #fff;
+    --scrollbar: rgba(215, 215, 215, 0.2);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+iframe{
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  border: none; 
+  z-index: -1;
+}
+
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; 
+}
+
+.Container {
+  width: 800px;
+  height: 400px;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: var(--Container);
+  position: relative;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.Container a {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.Container a i{
+  color: var(--icon);
+}
+
+.header {
+  top: 0;
+  align-self: center;
+  padding: 10px 0;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--Text);
+  z-index: 1;
+}
+
+.booking-info {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+.booking-info::-webkit-scrollbar {
+  width: 8px;
+}
+
+.booking-info::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar);
+  border-radius: 3px;
+}
+
+.booking-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  row-gap: 15px;
+  width: 100%;
+  max-width: 500px;
+  padding: 25px 30px;
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.row {
+  display: contents;
+}
+
+.label {
+  font-weight: 600;
+  font-size: 1.5rem;
+  text-align: right;
+  padding-right: 10px;
+  color: var(--Text);
+}
+
+.value {
+  color: var(--Text);
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+@media (max-width: 968px) {
+  .Container {
+    width: 85%;
+    height: 70%;
+    padding: 20px;
+  }
+
+  .booking-info .header {
+    font-size: 1.8rem;
+  }
+
+  .booking-card {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .label, .value {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .Container {
+    width: 85%;
+    height: 70%;
+    padding: 15px;
+  }
+
+  .booking-info {
+    gap: 15px;
+    padding-right: 5px;
+  }
+
+  .booking-info .header {
+    font-size: 1.5rem;
+  }
+
+  .booking-card {
+    padding: 10px;
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .label, .value {
+    font-size: 0.95rem;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
